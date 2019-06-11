@@ -6,21 +6,22 @@ public:
         vector<string> fi_result;
         if (digits.size() == 0) return fi_result;
         string current = "";
-      return dfs(digits,current);
+       dfs(digits,current);
         
+        return result;
         
     
     }
     
     vector <string> result;
     
-    vector<string> dfs(string digits, string current)
+    void dfs(string digits, string current)
     {
        //static vector <string> result; 
        if (digits.size() == 0) 
        {
            result.push_back(current);
-           return result;
+           //return result;
            
        }
         else
@@ -52,10 +53,11 @@ public:
             {
                 string new_current = current;
                 new_current.append(1,ch);
-                result = dfs(&digits[1],new_current);
+                //result = dfs(&digits[1],new_current);
+                dfs(&digits[1],new_current);
             }
             
-            return result;
+           // return result;
         }
     }
     
