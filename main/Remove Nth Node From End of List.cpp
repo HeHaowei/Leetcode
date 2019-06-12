@@ -17,8 +17,9 @@ public:
         
         if (n==1) {
             head = head -> next;
-            if (head == NULL) return head;
-            else return reverseNodem2(head);
+            /*if (head == NULL) return head;
+            else return reverseNodem2(head);*/
+            return reverseNodem2(head);
         }
         
             
@@ -45,7 +46,7 @@ public:
         
         ListNode* new_head = head;
         ListNode *pre_node = NULL;
-        
+        if (head == NULL) return head;
         while (head != NULL && head->next != NULL)
         {
             ListNode* new_head = head -> next;
