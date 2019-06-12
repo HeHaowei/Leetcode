@@ -18,7 +18,7 @@ public:
         if (n==1) {
             head = head -> next;
             if (head == NULL) return head;
-            else return reverseNode(head);
+            else return reverseNodem2(head);
         }
         
             
@@ -35,7 +35,7 @@ public:
             current_head -> next = (current_head -> next) -> next;
         }
         
-        head = reverseNode(head);
+        head = reverseNodem2(head);
         
         return head;
         
@@ -58,5 +58,27 @@ public:
         
         return head;
         
+    }
+    
+    ListNode *reverseNodem2(ListNode *head)
+    {
+        if (head == NULL || head -> next == NULL) {
+            return head;
+        }
+        
+        else 
+        {
+            ListNode* new_head = reverseNodem2(head->next);
+            
+            ListNode *result_head = new_head;
+            while (new_head->next!= NULL)
+            {
+                new_head = new_head -> next;
+            }
+                new_head -> next = head;
+            head -> next = NULL;
+            
+            return result_head;
+        }
     }
 };
