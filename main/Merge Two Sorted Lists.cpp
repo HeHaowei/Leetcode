@@ -8,110 +8,84 @@
  */
 class Solution {
 public:
-    ListNode* mergeKLists(vector<ListNode*>& lists) {
-    
-        int size_list = lists.size();
-        if (size_list == 0) return NULL;
-        else 
-            if (size_list == 1) return ((*lists.begin()));
-        else 
-            if (size_list == 2)
+    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+        ListNode *head = NULL;
+        ListNode *pre = NULL;
+
+        while (l1 != NULL || l2 != NULL)
+        {
+            if (l1 != NULL && l2 != NULL)
             {
-                ListNode* list1 = lists[0];
-                ListNode* list2 = lists[1];
-                ListNode* newlist = NULL;
-                ListNode* pre;
-                
-                while (list1 != NULL || list2 != NULL)
+                if (l1->val < l2->val)
                 {
-                    if (list1 == NULL)
+                  if (head == NULL) 
                     {
-                       if (newlist == NULL) {
-                           newlist = list2;
-                           //pre = list2;
-                           break;
-                       }
-                       
-                        else
-                        {
-                            pre->next = list2;
-                            //list2 = list2 ->next;
-                            //pre = pre->next;
-                            break;
-                        }
-                        
-                        
+                        head = l1;
+                        pre = l1;
+                        l1 = l1 -> next;
                     }
-                    
-                    else if (list2 == NULL)
-                    {
-                        if (newlist == NULL) {
-                           newlist = list1;
-                           //pre = list1;
-                           break;
-                       }
-                       
-                        else
-                        {
-                            pre->next = list1;
-                            //list1 = list1->next;
-                            //pre = pre->next;
-                            break;
-                        }
-                    }
-                    
                     else
                     {
-                        if (list1->val <= list2->val)
-                        {
-                            if (newlist == NULL)
-                            {
-                                newlist = list1;
-                                pre = list1;
-                                list1 = list1->next;
-                            }
-                            else
-                            {
-                                pre->next = list1;
-                                list1 = list1->next;
-                                pre = pre->next;
-                            }
-                        }
-                        
-                        else
-                        {
-                            if (newlist == NULL)
-                            {
-                                newlist = list2;
-                                pre = list2;
-                                list2 = list2->next;
-                            }
-                            else
-                            {
-                                pre->next = list2;
-                                list2 = list2->next;
-                                pre = pre->next;
-                            }
-                        }
+                        pre -> next = l1;  
+                        l1 = l1 -> next;
+                        pre = pre -> next;
                     }
                 }
-                
-                return newlist;
-                
-                
+
+                else
+                {
+                    if (head == NULL) 
+                    {
+                        head = l2;
+                        pre = l2;
+                       l2 = l2 -> next;
+                    }
+                    else
+                    {
+                        pre -> next = l2;  
+                        l2 = l2 -> next;
+                        pre = pre -> next;
+                    } 
+                }
             }
-        
-        else 
-        {
-            vector<ListNode*>left_half;
-            for (int i=0; i<size_list/2;i++) left_half.push_back(lists[i]);
-            lists.erase(lists.begin(),lists.begin() + size_list/2);
-            vector<ListNode*> new_lists;
-            new_lists.push_back(mergeKLists(left_half));
-            new_lists.push_back(mergeKLists(lists));
-            return mergeKLists(new_lists);
+
+
+                else if (l2 == NULL)
+                {
+                    if (head == NULL) 
+                    {
+                        head = l1;
+                        pre = l1;
+                        l1 = l1 -> next;
+                    }
+                    else
+                    {
+                        pre -> next = l1;  
+                        l1 = l1 -> next;
+                        pre = pre -> next;
+                    }
+
+                }
+
+                else
+                {
+                   if (head == NULL) 
+                    {
+                        head = l2;
+                        pre = l2;
+                       l2 = l2 -> next;
+                    }
+                    else
+                    {
+                        pre -> next = l2;  
+                        l2 = l2 -> next;
+                        pre = pre -> next;
+                    } 
+                }
+
         }
+
+        return head;
+
     }
-    
-    
 };
