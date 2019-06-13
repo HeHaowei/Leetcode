@@ -20,20 +20,23 @@ public:
                 ListNode* list1 = lists[0];
                 ListNode* list2 = lists[1];
                 ListNode* newlist = NULL;
-                ListNode* pre = NULL;
+                ListNode* pre;
                 
                 while (list1 != NULL || list2 != NULL)
                 {
                     if (list1 == NULL)
                     {
-                       if (newlist = NULL) {
+                       if (newlist == NULL) {
                            newlist = list2;
+                           //pre = list2;
                            break;
                        }
                        
                         else
                         {
                             pre->next = list2;
+                            //list2 = list2 ->next;
+                            //pre = pre->next;
                             break;
                         }
                         
@@ -42,14 +45,17 @@ public:
                     
                     else if (list2 == NULL)
                     {
-                        if (newlist = NULL) {
+                        if (newlist == NULL) {
                            newlist = list1;
+                           //pre = list1;
                            break;
                        }
                        
                         else
                         {
                             pre->next = list1;
+                            //list1 = list1->next;
+                            //pre = pre->next;
                             break;
                         }
                     }
