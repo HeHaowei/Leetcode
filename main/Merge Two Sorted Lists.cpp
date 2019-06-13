@@ -64,6 +64,7 @@ public:
                         l1 = l1 -> next;
                         pre = pre -> next;
                     }
+                    break;
 
                 }
 
@@ -74,13 +75,16 @@ public:
                         head = l2;
                         pre = l2;
                        l2 = l2 -> next;
+                       
                     }
                     else
                     {
                         pre -> next = l2;  
                         l2 = l2 -> next;
                         pre = pre -> next;
+                       
                     } 
+                    break;
                 }
 
         }
